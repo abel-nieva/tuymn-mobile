@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Regístrate</ion-title>
+
+    <ion-buttons start>
+      <button ion-button (click)="dismiss()">
+        <span color="primary" showWhen="ios">Cancelar</span>
+        <ion-icon name="md-close" showWhen="android,windows"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <h1>Únete hoy a Tuymn</h1>
+
+  <ion-list>
+
+    <ion-item>
+      <ion-input type="text" placeholder="Email" [(ngModel)]="email"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-input type="password" placeholder="Password" [(ngModel)]="password"></ion-input>
+    </ion-item>
+
+  </ion-list>
+
+  <button ion-button block (click)="signup()">Regístrate</button>
+</ion-content>
