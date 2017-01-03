@@ -1,6 +1,5 @@
 import { NgModule, ErrorHandler } from '@angular/core';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
-import { AngularFireModule } from 'angularfire2';
 
 import { MyApp } from './app.component';
 import { WelcomePage } from '../pages/welcome/welcome';
@@ -9,13 +8,7 @@ import { TabsPage } from '../pages/tabs/tabs';
 import { HomePage } from '../pages/home/home';
 import { ProfilePage } from '../pages/profile/profile';
 
-export const firebaseConfig = {
-  apiKey: "AIzaSyDZu_cCm45CcQkjsb_QLNY9tk49R5jH3F8",
-  authDomain: "tuymn-865fc.firebaseapp.com",
-  databaseURL: "https://tuymn-865fc.firebaseio.com",
-  storageBucket: "tuymn-865fc.appspot.com",
-  messagingSenderId: "745519708545"
-};
+import Parse from 'parse';
 
 @NgModule({
   declarations: [
@@ -27,8 +20,7 @@ export const firebaseConfig = {
     ProfilePage
   ],
   imports: [
-    IonicModule.forRoot(MyApp),
-    AngularFireModule.initializeApp(firebaseConfig)
+    IonicModule.forRoot(MyApp)
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -41,4 +33,13 @@ export const firebaseConfig = {
   ],
   providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}]
 })
-export class AppModule {}
+export class AppModule {
+  private appId: string = ')+A8?.Q^Nawmh*Aa';
+  private serverURL: string = 'https://tuymn-parse.herokuapp.com/parse';
+
+  constructor() {
+    Parse.initialize(this.appId);
+    Parse.serverURL = this.serverURL;
+  }
+
+}

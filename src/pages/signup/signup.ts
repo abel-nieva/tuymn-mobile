@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { ViewController } from 'ionic-angular';
-import { AngularFireAuth } from 'angularfire2';
+
+import Parse from 'parse';
 
 @Component({
   selector: 'page-signup',
@@ -11,8 +12,7 @@ export class SignupPage {
   private password: string;
 
   constructor(
-    public viewCtrl: ViewController,
-    private auth: AngularFireAuth
+    public viewCtrl: ViewController
   ) {}
 
   dismiss() {
@@ -20,7 +20,6 @@ export class SignupPage {
   }
 
   signup() {
-    console.log(this.email, this.password);
   }
 
 }
