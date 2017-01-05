@@ -14,17 +14,13 @@
 <ion-content padding>
   <h1>Únete hoy a Tuymn</h1>
 
-  <ion-list>
-
+  <form [formGroup]="signupForm" (ngSubmit)="logForm()">
     <ion-item>
-      <ion-input type="text" placeholder="Email" [(ngModel)]="email"></ion-input>
+      <ion-input type="email" placeholder="Email" formControlName="email"></ion-input>
     </ion-item>
-
     <ion-item>
-      <ion-input type="password" placeholder="Password" [(ngModel)]="password"></ion-input>
+      <ion-input type="password" placeholder="Password" formControlName="password"></ion-input>
     </ion-item>
-
-  </ion-list>
-
-  <button ion-button block (click)="signup()">Regístrate</button>
+    <button ion-button block type="submit" [disabled]="!signupForm.valid">Regístrate</button>
+  </form>
 </ion-content>
