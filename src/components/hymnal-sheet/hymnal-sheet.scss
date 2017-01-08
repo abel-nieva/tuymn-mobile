@@ -1,0 +1,44 @@
+hymnal-sheet {
+    .wrapper {
+        max-width: 800px;
+        margin: 0 auto;
+    }
+    .strophe,
+    .chorus {
+        font-size: 17px;
+        &.selected {
+            .content {
+                border-bottom: dotted 0.07143rem #777;
+            }
+        }
+        &.highlighted {
+            .content {
+                background: color($colors, yellow);
+            }
+        }
+    }
+    .strophe {
+        .content {
+            margin-left: 12px;
+        }
+        .label {
+            position: absolute;
+        }
+    }
+    .chorus {
+        .verse {
+            text-align: right;
+            font-style: italic;
+        }
+    }
+    .verse {
+        display: block;
+    }
+    .content {
+        padding: 0 2px;
+    }
+    .label {
+        font-size: 14px;
+        font-weight: bold;
+    }
+}

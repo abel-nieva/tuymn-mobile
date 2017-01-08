@@ -1,0 +1,20 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-segment color="primary">
+      <ion-segment-button value="hymn" [ngSwitch]="!!readerHymn" (ionSelect)="presentHymnList()">
+        <div *ngSwitchCase="!!readerHymn.title">{{ readerHymn.title }}</div>
+        <div *ngSwitchDefault>---</div>
+      </ion-segment-button>
+      <ion-segment-button value="hymnal" [ngSwitch]="!!readerHymnal" (ionSelect)="presentHymnalList()">
+        <div *ngSwitchCase="!!readerHymnal.title">{{ readerHymnal.title }}</div>
+        <div *ngSwitchDefault>---</div>
+      </ion-segment-button>
+    </ion-segment>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+
+  <hymnal-sheet *ngIf="readerHymn" [hymn]="readerHymn"></hymnal-sheet>
+
+</ion-content>

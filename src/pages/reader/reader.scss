@@ -1,0 +1,13 @@
+page-reader {
+    .segment-button {
+        padding: 0 3px;
+        div {
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        &.segment-activated {
+            background-color: transparent!important;
+            color: color($colors, primary)!important;
+        }
+    }
+}

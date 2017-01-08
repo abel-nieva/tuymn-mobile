@@ -1,0 +1,24 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Himnos</ion-title>
+    <ion-buttons>
+      <button ion-button (click)="dismiss()">
+        <span showWhen="ios">Cancelar</span>
+        <ion-icon name="arrow-back" showWhen="android,windows"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-toolbar color="light">
+    <ion-searchbar (input)="getItems($event)"></ion-searchbar>
+  </ion-toolbar>
+
+  <ion-list>
+    <ion-item item-left *ngFor="let hymn of hymnList" (click)="dismiss(hymn)">
+      <div item-content>{{ hymn.number }}</div>
+      <ion-label>{{ hymn.title }}</ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>

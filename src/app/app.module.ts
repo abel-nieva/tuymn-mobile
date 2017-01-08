@@ -2,21 +2,34 @@ import { NgModule, ErrorHandler } from '@angular/core';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 
 import { MyApp } from './app.component';
+
+import { HymnalSheetComponent } from '../components/hymnal-sheet/hymnal-sheet';
+
 import { WelcomePage } from '../pages/welcome/welcome';
 import { SignupPage } from '../pages/signup/signup';
 import { TabsPage } from '../pages/tabs/tabs';
 import { HomePage } from '../pages/home/home';
+import { ReaderPage } from '../pages/reader/reader';
+import { HymnListPage } from '../pages/hymn-list/hymn-list';
+import { HymnalListPage } from '../pages/hymnal-list/hymnal-list';
 import { ProfilePage } from '../pages/profile/profile';
+
+import { HymnalProvider } from '../providers/hymnal';
+import { HymnProvider } from '../providers/hymn';
 
 import Parse from 'parse';
 
 @NgModule({
   declarations: [
     MyApp,
+    HymnalSheetComponent,
     WelcomePage,
     SignupPage,
     TabsPage,
     HomePage,
+    ReaderPage,
+    HymnListPage,
+    HymnalListPage,
     ProfilePage
   ],
   imports: [
@@ -25,13 +38,24 @@ import Parse from 'parse';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
+    HymnalSheetComponent,
     WelcomePage,
     SignupPage,
     TabsPage,
     HomePage,
+    ReaderPage,
+    HymnListPage,
+    HymnalListPage,
     ProfilePage
   ],
-  providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}]
+  providers: [
+    {
+      provide: ErrorHandler,
+      useClass: IonicErrorHandler
+    },
+    HymnalProvider,
+    HymnProvider
+  ]
 })
 export class AppModule {
   private appId: string = ')+A8?.Q^Nawmh*Aa';

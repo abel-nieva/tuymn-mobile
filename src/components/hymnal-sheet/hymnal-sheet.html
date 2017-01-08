@@ -1,0 +1,20 @@
+<div class="wrapper">
+  <h2 class="number">{{ hymn.number }}</h2>
+
+  <h1 class="title">{{ hymn.title }}</h1>
+
+  <div *ngFor="let strophe of hymn.strophes; let i = index; ">
+    <p class="strophe">
+      <span class="label">{{ i + 1 }}</span>
+      <span class="verse" *ngFor="let verse of strophe">
+        <span class="content">{{ verse }}</span>
+      </span>
+    </p>
+    <p class="chorus" *ngFor="let chorus of hymn.chorus | slice:i:i+1">
+      <span class="label">Coro</span>
+      <span class="verse" *ngFor="let verse of chorus">
+        <span class="content">{{ verse }}</span>
+      </span>
+    </p>
+  </div>
+</div>
