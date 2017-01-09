@@ -17,8 +17,8 @@
 
   <ion-list>
     <ion-item item-left *ngFor="let hymn of hymnList" (click)="dismiss(hymn)">
-      <div item-content>{{ hymn.number }}</div>
-      <ion-label>{{ hymn.title }}</ion-label>
+      <div item-content>{{ hymn.get('number') }}</div>
+      <ion-label>{{ hymn.get('title') }}</ion-label>
     </ion-item>
   </ion-list>
 </ion-content>

@@ -28,10 +28,7 @@ export class HymnalListPage {
   }
 
   dismiss(hymnal) {
-    let data = {
-      hymnal: hymnal
-    };
-    this.viewCtrl.dismiss(data);
+    this.viewCtrl.dismiss(hymnal);
   }
 
 }

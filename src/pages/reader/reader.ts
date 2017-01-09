@@ -58,8 +58,10 @@ export class ReaderPage {
       readerHymnal: this.readerHymnalObj
     });
 
-    hymnListModal.onDidDismiss(data => {
-      if (!!data.hymn) this.readerHymn = data.hymn;
+    hymnListModal.onDidDismiss(hymn => {
+      if (!!hymn && hymn.objectId != this.readerHymn.objectId) {
+        this.readerHymn = this.hymnProvider.parse(hymn);
+      }
     });
     hymnListModal.present();
   }
@@ -67,10 +69,10 @@ export class ReaderPage {
   presentHymnalList() {
     let hymnalListModal = this.modalCtrl.create(HymnalListPage);
 
-    hymnalListModal.onDidDismiss(data => {
-      if (!!data.hymnal && data.hymnal.id != this.readerHymnal.objectId) {
-        this.readerHymnalObj = data.hymnal;
-        this.readerHymnal = data.hymnal.toJSON();
+    hymnalListModal.onDidDismiss(hymnal => {
+      if (!!hymnal && hymnal.id != this.readerHymnal.objectId) {
+        this.readerHymnalObj = hymnal;
+        this.readerHymnal = hymnal.toJSON();
         this.hymnProvider.getFirst(this.readerHymnalObj)
           .then((response: any) => {
             this.readerHymn = this.hymnProvider.parse(response.toJSON());

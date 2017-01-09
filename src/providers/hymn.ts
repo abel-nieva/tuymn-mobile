@@ -20,14 +20,6 @@ export class HymnProvider {
     return hymn;
   }
 
-  parseHymns(hymns) {
-    hymns = hymns.reduce((accumulator, value, index) => {
-      accumulator.push(this.parse(value.toJSON()));
-      return accumulator;
-    }, []);
-    return hymns;
-  }
-
   getHymnsByHymnal(hymnal) {
     let hymn = Parse.Object.extend('Hymn');
     let hymnQuery = new Parse.Query(hymn);

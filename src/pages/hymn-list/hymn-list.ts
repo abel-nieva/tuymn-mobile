@@ -24,17 +24,17 @@ export class HymnListPage {
   ionViewDidLoad() {
     this.hymnProvider.getHymnsByHymnal(this.readerHymnal)
       .then((results: any) => {
-        this.hymnList = this.hymnProvider.parseHymns(results);
+        this.hymnList = results;
       }, error => {
         console.log(error);
       });
   }
 
   dismiss(hymn) {
-    let data = {
-      hymn: hymn
-    };
-    this.viewCtrl.dismiss(data);
+    if (hymn) {
+      hymn = hymn.toJSON();
+    }
+    this.viewCtrl.dismiss(hymn);
   }
 
   getItems() {
