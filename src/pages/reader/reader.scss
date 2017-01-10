@@ -7,7 +7,7 @@ page-reader {
         }
         &.segment-activated {
             background-color: transparent!important;
-            color: color($colors, primary)!important;
+            color: color($colors, dark)!important;
         }
     }
 }

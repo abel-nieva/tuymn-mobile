@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar>
-    <ion-segment color="primary">
+    <ion-segment color="dark">
       <ion-segment-button value="hymn" [ngSwitch]="!!readerHymn" (ionSelect)="presentHymnList()">
         <div *ngSwitchCase="!!readerHymn.title">{{ readerHymn.title }}</div>
         <div *ngSwitchDefault>---</div>
