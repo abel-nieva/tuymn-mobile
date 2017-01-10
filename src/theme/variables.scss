@@ -27,8 +27,9 @@ $colors: (
   primary:    #FB3958,
   secondary:  #458EFF,
   danger:     #FB3958,
-  light:      #F5F5F5,
-  dark:       #212121,
+  light:      #FAFAFA,
+  gray:       #DBDBDB,
+  dark:       #262626,
   yellow:     #FFC838,
   white:      #FFF
 );
@@ -63,6 +64,7 @@ $colors: (
 // default are overridden.
 
 @import "ionic.theme.default";
+@import "ionic.theme.tuymn";
 
 
 // Ionicons
@@ -71,6 +73,7 @@ $colors: (
 // http://ionicframework.com/docs/v2/ionicons/
 
 @import "ionicons";
+@import "components.iconic";
 
 
 // Fonts

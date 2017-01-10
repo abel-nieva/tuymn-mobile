@@ -1,4 +1,4 @@
-<h3 class="title" *ngIf="!!hymn.title">{{ hymn.number }}. {{ hymn.title | uppercase }}</h3>
+<h6 class="title" *ngIf="!!hymn.title">{{ hymn.number }}. {{ hymn.title }}</h6>
 
 <div *ngFor="let strophe of hymn.strophes; let i = index;">
   <p class="strophe">
