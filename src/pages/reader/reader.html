@@ -6,7 +6,7 @@
         <div *ngSwitchDefault>---</div>
       </ion-segment-button>
       <ion-segment-button value="hymnal" [ngSwitch]="!!readerHymnal" (ionSelect)="presentHymnalList()">
-        <div *ngSwitchCase="!!readerHymnal.title">{{ readerHymnal.title }}</div>
+        <div *ngSwitchCase="!!readerHymnal.title">{{ readerHymnal.acronym }}</div>
         <div *ngSwitchDefault>---</div>
       </ion-segment-button>
     </ion-segment>

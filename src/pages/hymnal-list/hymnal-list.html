@@ -2,7 +2,7 @@
   <ion-toolbar>
     <ion-title>Himnarios</ion-title>
     <ion-buttons>
-      <button ion-button (click)="dismiss()">
+      <button ion-button (click)="dismiss()" color="dark">
         <span showWhen="ios">Cancelar</span>
         <ion-icon name="arrow-back" showWhen="android,windows"></ion-icon>
       </button>
@@ -13,7 +13,8 @@
 <ion-content>
   <ion-list>
     <ion-item item-left *ngFor="let hymnal of hymnalList" (click)="dismiss(hymnal)">
-      {{ hymnal.get('title') }}
+      <h2>{{ hymnal.get('acronym') }} <ion-icon *ngIf="hymnal.get('audio')" name="volume-up"></ion-icon></h2>
+      <h3>{{ hymnal.get('title') }}</h3>
     </ion-item>
   </ion-list>
 </ion-content>
