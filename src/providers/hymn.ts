@@ -38,4 +38,14 @@ export class HymnProvider {
     return hymnQuery.first();
   }
 
+  getHymnByNumber(number) {
+    let hymn = Parse.Object.extend('Hymn');
+    let hymnQuery = new Parse.Query(hymn);
+
+    hymnQuery.equalTo('number', number);
+    hymnQuery.toJSON();
+
+    return hymnQuery.first();
+  }
+
 }

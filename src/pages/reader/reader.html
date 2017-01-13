@@ -15,6 +15,14 @@
 
 <ion-content>
 
-  <hymnal-sheet *ngIf="readerHymn" [hymn]="readerHymn"></hymnal-sheet>
+  <hymnal-sheet *ngIf="readerHymn" [hymn]="readerHymn" [hymnal]="readerHymnal"></hymnal-sheet>
+
+  <ion-fab bottom left *ngIf="readerHymn.number > 1">
+    <button ion-fab mini color="white" (click)="previousHymn()"><ion-icon name="arrow-dropleft"></ion-icon></button>
+  </ion-fab>
+
+  <ion-fab bottom right *ngIf="readerHymn.number < readerHymnal.numberOfHymns">
+    <button ion-fab mini color="white" (click)="nextHymn()"><ion-icon name="arrow-dropright"></ion-icon></button>
+  </ion-fab>
 
 </ion-content>
