@@ -1,6 +1,7 @@
 hymnal-sheet {
     text-align: center;
-    .title {
+    .title,
+    .copyright {
         padding: 0 16px;
     }
     .strophe,
@@ -24,5 +25,8 @@ hymnal-sheet {
     }
     .content {
         padding: 0 2px;
+    }
+    .copyright {
+        margin-bottom: 7rem;
     }
 }

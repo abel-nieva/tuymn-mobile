@@ -7,12 +7,8 @@ import { Component, Input } from '@angular/core';
 export class HymnalSheetComponent {
 
   @Input() hymn;
-  public verseNumber: number = 1;
+  @Input() hymnal;
 
   constructor() {}
-
-  popArray() {
-    this.hymn.chorus.pop();
-  }
 
 }
