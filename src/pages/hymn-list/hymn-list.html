@@ -16,9 +16,8 @@
   </ion-toolbar>
 
   <ion-list>
-    <ion-item item-left *ngFor="let hymn of hymnList" (click)="dismiss(hymn)">
-      <div item-content>{{ hymn.get('number') }}</div>
-      <ion-label>{{ hymn.get('title') }}</ion-label>
+    <ion-item item-left *ngFor="let hymn of hymnList" [ngClass]="{active: hymn.id == readerHymn.objectId }" (click)="dismiss(hymn)">
+      {{ hymn.get('number') }}. {{ hymn.get('title') }}
     </ion-item>
   </ion-list>
 </ion-content>

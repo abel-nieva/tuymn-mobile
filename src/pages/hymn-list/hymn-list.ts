@@ -10,6 +10,7 @@ import { HymnProvider } from '../../providers/hymn';
 export class HymnListPage {
 
   public hymnList;
+  public readerHymn;
   private readerHymnal;
 
   constructor(
@@ -18,6 +19,7 @@ export class HymnListPage {
     private viewCtrl: ViewController,
     private hymnProvider: HymnProvider
   ) {
+    this.readerHymn = this.navParams.get('readerHymn');
     this.readerHymnal = this.navParams.get('readerHymnal');
   }
 

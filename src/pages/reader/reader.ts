@@ -54,7 +54,8 @@ export class ReaderPage {
 
   presentHymnList() {
     let hymnListModal = this.modalCtrl.create(HymnListPage, {
-      readerHymnal: this.readerHymnalObj
+      readerHymnal: this.readerHymnalObj,
+      readerHymn: this.readerHymn
     });
 
     hymnListModal.onDidDismiss(hymn => {

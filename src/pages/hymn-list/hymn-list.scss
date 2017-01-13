@@ -1,3 +1,5 @@
 page-hymn-list {
-
+  .active {
+    color: color($colors, primary);
+  }
 }
