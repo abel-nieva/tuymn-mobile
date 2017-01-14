@@ -1,9 +1,23 @@
 page-welcome {
+    h1, p {
+        color: color($colors, light);
+    }
     h1 {
         font-weight: bold;
-        font-size: 2.5em;
+        font-size: 4rem;
     }
     p {
-        font-size: 1.4em;
+        font-size: 2rem;
+    }
+    .content {
+        background-image: -webkit-linear-gradient(315deg, #FF4D00 0%, #FF0033 50%, #FF00B3 100%);
+        background-image: -ms-linear-gradient(315deg, #FF4D00 0%, #FF0033 50%, #FF00B3 100%);
+        background-image: linear-gradient(315deg, #FF4D00 0%, #FF0033 50%, #FF00B3 100%);
+    }
+    .tuy-icon-icon {
+        font-size: 3rem;
+    }
+    .button-default {
+        color: color($colors, primary);
     }
 }

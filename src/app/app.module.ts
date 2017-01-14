@@ -3,6 +3,7 @@ import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 
 import { MyApp } from './app.component';
 
+import { DisallowSpacesDirective } from '../components/disallow-spaces/disallow-spaces';
 import { HymnalSheetComponent } from '../components/hymnal-sheet/hymnal-sheet';
 
 import { WelcomePage } from '../pages/welcome/welcome';
@@ -22,6 +23,7 @@ import Parse from 'parse';
 @NgModule({
   declarations: [
     MyApp,
+    DisallowSpacesDirective,
     HymnalSheetComponent,
     WelcomePage,
     SignupPage,

@@ -1,31 +1,40 @@
-<ion-header>
-  <ion-toolbar>
+<ion-header no-border padding-top>
+  <ion-toolbar color="white">
     <ion-title>
-      Tuymn
+      <span ion-text class="tuy-icon-icon" color="primary"></span>
     </ion-title>
 
     <ion-buttons start>
       <button ion-button (click)="dismiss()">
-        <span ion-text color="primary" showWhen="ios">Cancelar</span>
+        <span ion-text color="dark" showWhen="ios">Cancelar</span>
         <ion-icon name="md-close" showWhen="android,windows"></ion-icon>
       </button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
-<ion-content padding>
-  <p>Únete hoy a Tuymn</p>
+<ion-content>
+  <p padding>Únete hoy a Tuymn.</p>
 
-  <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+  <form [formGroup]="signupForm">
     <ion-item>
-      <ion-input type="text" placeholder="Username" formControlName="username"></ion-input>
+      <ion-input type="text" placeholder="Nombre de usuario" formControlName="username" autofocus text-lowercase
+        disallow-spaces></ion-input>
     </ion-item>
     <ion-item>
-      <ion-input type="email" placeholder="Email" formControlName="email"></ion-input>
+      <ion-input type="email" placeholder="Correo electrónico" formControlName="email" text-lowercase></ion-input>
     </ion-item>
     <ion-item margin-bottom>
-      <ion-input type="password" placeholder="Password" formControlName="password"></ion-input>
+      <ion-input type="password" placeholder="Contraseña" formControlName="password"></ion-input>
     </ion-item>
-    <button ion-button block type="submit" [disabled]="!signupForm.valid">Regístrate</button>
   </form>
+
+  <p class="legal" padding-horizontal text-center>Al registrarte, estás aceptando las
+    <strong>Condiciones de Servicio</strong> y la <strong>Política de Privacidad</strong>.</p>
 </ion-content>
+
+<ion-footer text-right>
+  <ion-toolbar color="white" padding-horizontal>
+      <button ion-button color="primary" small [disabled]="!signupForm.valid" (click)="onSubmit()">Regístrate</button>
+  </ion-toolbar>
+</ion-footer>

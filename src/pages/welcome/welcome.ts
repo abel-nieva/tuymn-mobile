@@ -13,7 +13,7 @@ export class WelcomePage {
     public modalCtrl: ModalController
   ) {}
 
-  showSignupPage() {
+  presentSignup() {
     let modal = this.modalCtrl.create(SignupPage);
     modal.present();
   }

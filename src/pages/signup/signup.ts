@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { Validators, FormBuilder } from '@angular/forms';
-import { ViewController, LoadingController, NavController } from 'ionic-angular';
+import { Component } from '@angular/core';
+import { Validators, FormBuilder, FormGroup } from '@angular/forms';
+import { NavController, ViewController, LoadingController } from 'ionic-angular';
 
 import { TabsPage } from '../tabs/tabs';
 
@@ -10,18 +10,17 @@ import Parse from 'parse';
   selector: 'page-signup',
   templateUrl: 'signup.html'
 })
-export class SignupPage implements OnInit {
-  public signupForm: any;
-  private emailRegex: RegExp = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+export class SignupPage {
+  private emailRegex: RegExp;
+  public signupForm: FormGroup;
 
   constructor(
-    public viewCtrl: ViewController,
     private formBuilder: FormBuilder,
-    public loadingCtrl: LoadingController,
-    public navCtrl: NavController
-  ) {}
-
-  ngOnInit() {
+    public navCtrl: NavController,
+    public viewCtrl: ViewController,
+    public loadingCtrl: LoadingController
+  ) {
+    this.emailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     this.signupForm = this.formBuilder.group({
       username: [
         '',
@@ -45,9 +44,7 @@ export class SignupPage implements OnInit {
   }
 
   onSubmit() {
-    let loading = this.loadingCtrl.create({
-      content: 'Please wait...'
-    });
+    let loading = this.loadingCtrl.create();
     loading.present();
 
     let user = new Parse.User();
