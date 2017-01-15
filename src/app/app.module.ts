@@ -1,54 +1,72 @@
-import { NgModule, ErrorHandler } from '@angular/core';
+import { Http } from '@angular/http';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
+import { NgModule, ErrorHandler } from '@angular/core';
+import { TranslateModule, TranslateLoader, TranslateStaticLoader } from 'ng2-translate';
 
 import { MyApp } from './app.component';
 
 import { DisallowSpacesDirective } from '../components/disallow-spaces/disallow-spaces';
-import { HymnalSheetComponent } from '../components/hymnal-sheet/hymnal-sheet';
+import { UniqueEmailDirective } from '../components/unique-email/unique-email';
+import { UniqueUsernameDirective } from '../components/unique-username/unique-username';
 
-import { WelcomePage } from '../pages/welcome/welcome';
+import { HymnalSheetComponent } from '../components/hymnal-sheet/hymnal-sheet';
+import { InputErrorComponent } from '../components/input-error/input-error';
+
+import { HomePage } from '../pages/home/home';
+import { HymnalListPage } from '../pages/hymnal-list/hymnal-list';
+import { HymnListPage } from '../pages/hymn-list/hymn-list';
+import { ProfilePage } from '../pages/profile/profile';
+import { ReaderPage } from '../pages/reader/reader';
 import { SignupPage } from '../pages/signup/signup';
 import { TabsPage } from '../pages/tabs/tabs';
-import { HomePage } from '../pages/home/home';
-import { ReaderPage } from '../pages/reader/reader';
-import { HymnListPage } from '../pages/hymn-list/hymn-list';
-import { HymnalListPage } from '../pages/hymnal-list/hymnal-list';
-import { ProfilePage } from '../pages/profile/profile';
+import { WelcomePage } from '../pages/welcome/welcome';
 
 import { HymnalProvider } from '../providers/hymnal';
 import { HymnProvider } from '../providers/hymn';
+import { UserData } from '../providers/user-data';
 
 import Parse from 'parse';
+
+export function createTranslateLoader(http: Http) {
+  return new TranslateStaticLoader(http, './assets/i18n', '.json');
+}
 
 @NgModule({
   declarations: [
     MyApp,
     DisallowSpacesDirective,
+    UniqueEmailDirective,
+    UniqueUsernameDirective,
     HymnalSheetComponent,
-    WelcomePage,
+    InputErrorComponent,
+    HomePage,
+    HymnalListPage,
+    HymnListPage,
+    ProfilePage,
+    ReaderPage,
     SignupPage,
     TabsPage,
-    HomePage,
-    ReaderPage,
-    HymnListPage,
-    HymnalListPage,
-    ProfilePage
+    WelcomePage
   ],
   imports: [
+    TranslateModule.forRoot({
+      provide: TranslateLoader,
+      useFactory: (createTranslateLoader),
+      deps: [Http]
+    }),
     IonicModule.forRoot(MyApp)
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    HymnalSheetComponent,
-    WelcomePage,
+    HomePage,
+    HymnalListPage,
+    HymnListPage,
+    ProfilePage,
+    ReaderPage,
     SignupPage,
     TabsPage,
-    HomePage,
-    ReaderPage,
-    HymnListPage,
-    HymnalListPage,
-    ProfilePage
+    WelcomePage
   ],
   providers: [
     {
@@ -56,7 +74,8 @@ import Parse from 'parse';
       useClass: IonicErrorHandler
     },
     HymnalProvider,
-    HymnProvider
+    HymnProvider,
+    UserData
   ]
 })
 export class AppModule {

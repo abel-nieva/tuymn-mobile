@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ModalController } from 'ionic-angular';
+import { NavController, ModalController } from 'ionic-angular';
 
 import { SignupPage } from '../signup/signup';
 
@@ -10,6 +10,7 @@ import { SignupPage } from '../signup/signup';
 export class WelcomePage {
 
   constructor(
+    public navCtrl: NavController,
     public modalCtrl: ModalController
   ) {}
 

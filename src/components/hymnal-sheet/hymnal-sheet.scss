@@ -8,12 +8,12 @@ hymnal-sheet {
     .chorus {
         &.selected {
             .content {
-                border-bottom: dotted 0.07143rem #777;
+                border-bottom: dotted 0.07143rem color($colors, gray);
             }
         }
         &.highlighted {
             .content {
-                background: color($colors, yellow);
+                background: color($colors, warning);
             }
         }
     }

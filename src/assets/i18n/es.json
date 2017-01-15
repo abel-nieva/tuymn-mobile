@@ -1,0 +1,11 @@
+{
+  "button.cancel": "Cancelar",
+  "button.signup": "Regístrate",
+  "input-error.max-length": "Tu nombre de usuario debe ser de 20 caracteres o menos.",
+  "input-error.unique-email": "Este correo electrónico ya está siendo utilizado.",
+  "input-error.unique-username": "Este nombre de usuario ya está siendo utilizado.",
+  "ion-input.placeholder.email": "Correo electrónico",
+  "ion-input.placeholder.password": "Contraseña",
+  "ion-input.placeholder.username": "Nombre de usuario",
+  "signup-page.title": "Únete hoy a Tuymn."
+}

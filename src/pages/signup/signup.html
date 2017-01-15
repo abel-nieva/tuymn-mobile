@@ -6,7 +6,7 @@
 
     <ion-buttons start>
       <button ion-button (click)="dismiss()">
-        <span ion-text color="dark" showWhen="ios">Cancelar</span>
+        <span ion-text color="dark" showWhen="ios">{{ 'button.cancel' | translate }}</span>
         <ion-icon name="md-close" showWhen="android,windows"></ion-icon>
       </button>
     </ion-buttons>
@@ -14,27 +14,39 @@
 </ion-header>
 
 <ion-content>
-  <p padding>Únete hoy a Tuymn.</p>
+  <h4 padding>{{ 'signup-page.title' | translate }}</h4>
 
   <form [formGroup]="signupForm">
-    <ion-item>
-      <ion-input type="text" placeholder="Nombre de usuario" formControlName="username" autofocus text-lowercase
-        disallow-spaces></ion-input>
+    <ion-item [ngClass]="{ 'has-error': username.errors?.uniqueUsername || username.errors?.maxlength }">
+      <ion-input disallow-spaces unique-username autofocus type="text"
+        placeholder="{{ 'ion-input.placeholder.username' | translate }}" formControlName="username"></ion-input>
+      <ion-spinner *ngIf="username.pending" item-right name="ios-small"></ion-spinner>
+      <ion-icon *ngIf="username.errors?.uniqueUsername || username.errors?.maxlength" item-right name="alert"></ion-icon>
+      <ion-icon *ngIf="username.valid" item-right name="checkmark-circle-outline" color="success"></ion-icon>
     </ion-item>
-    <ion-item>
-      <ion-input type="email" placeholder="Correo electrónico" formControlName="email" text-lowercase></ion-input>
+    <input-error *ngIf="username.errors?.uniqueUsername" [errorMessage]="'input-error.unique-username' | translate"></input-error>
+    <input-error *ngIf="username.errors?.maxlength" [errorMessage]="'input-error.max-length' | translate"></input-error>
+
+    <ion-item [ngClass]="{ 'has-error': email.errors?.uniqueEmail }">
+      <ion-input unique-email type="email" placeholder="{{ 'ion-input.placeholder.email' | translate }}" formControlName="email"></ion-input>
+      <ion-spinner *ngIf="email.pending" item-right name="ios-small"></ion-spinner>
+      <ion-icon *ngIf="email.errors?.uniqueEmail" item-right name="alert"></ion-icon>
+      <ion-icon *ngIf="email.valid" item-right name="checkmark-circle-outline" color="success"></ion-icon>
     </ion-item>
+    <input-error *ngIf="email.errors?.uniqueEmail" [errorMessage]="'input-error.unique-email' | translate"></input-error>
+
     <ion-item margin-bottom>
-      <ion-input type="password" placeholder="Contraseña" formControlName="password"></ion-input>
+      <ion-input type="password" placeholder="{{ 'ion-input.placeholder.password' | translate }}" formControlName="password"></ion-input>
+      <ion-icon *ngIf="password.valid" item-right name="checkmark-circle-outline" color="success"></ion-icon>
     </ion-item>
   </form>
 
-  <p class="legal" padding-horizontal text-center>Al registrarte, estás aceptando las
-    <strong>Condiciones de Servicio</strong> y la <strong>Política de Privacidad</strong>.</p>
+  <div class="legal" padding-horizontal text-center><small>Al registrarte, estás aceptando las <strong>Condiciones de 
+    Servicio</strong> y la <strong>Política de Privacidad</strong>.</small></div>
 </ion-content>
 
 <ion-footer text-right>
   <ion-toolbar color="white" padding-horizontal>
-      <button ion-button color="primary" small [disabled]="!signupForm.valid" (click)="onSubmit()">Regístrate</button>
+      <button ion-button color="primary" small [disabled]="!signupForm.valid" (click)="onSubmit()">{{ 'button.signup' | translate }}</button>
   </ion-toolbar>
 </ion-footer>
