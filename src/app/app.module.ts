@@ -15,6 +15,7 @@ import { InputErrorComponent } from '../components/input-error/input-error';
 import { HomePage } from '../pages/home/home';
 import { HymnalListPage } from '../pages/hymnal-list/hymnal-list';
 import { HymnListPage } from '../pages/hymn-list/hymn-list';
+import { LoginPage } from '../pages/login/login';
 import { ProfilePage } from '../pages/profile/profile';
 import { ReaderPage } from '../pages/reader/reader';
 import { SignupPage } from '../pages/signup/signup';
@@ -42,6 +43,7 @@ export function createTranslateLoader(http: Http) {
     HomePage,
     HymnalListPage,
     HymnListPage,
+    LoginPage,
     ProfilePage,
     ReaderPage,
     SignupPage,
@@ -62,6 +64,7 @@ export function createTranslateLoader(http: Http) {
     HomePage,
     HymnalListPage,
     HymnListPage,
+    LoginPage,
     ProfilePage,
     ReaderPage,
     SignupPage,

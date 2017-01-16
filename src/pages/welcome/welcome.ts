@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, ModalController } from 'ionic-angular';
 
+import { LoginPage } from '../login/login';
 import { SignupPage } from '../signup/signup';
 
 @Component({
@@ -14,9 +15,12 @@ export class WelcomePage {
     public modalCtrl: ModalController
   ) {}
 
-  presentSignup() {
-    let modal = this.modalCtrl.create(SignupPage);
-    modal.present();
+  public presentLogin() {
+    this.modalCtrl.create(LoginPage).present();
+  }
+
+  public presentSignup() {
+    this.modalCtrl.create(SignupPage).present();
   }
 
 }

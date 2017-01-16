@@ -16,8 +16,19 @@ export class UserData {
 
     return new Promise((resolve, reject) => {
       User.signUp(null)
-        .then(data => {
-          resolve(data);
+        .then(user => {
+          resolve(user);
+        }, error => {
+          reject(error);
+        });
+    });
+  }
+
+  logIn(username: string, password: string): Promise<Parse.Object> {
+    return new Promise((resolve, reject) => {
+      Parse.User.logIn(username, password)
+        .then(user => {
+          resolve(user);
         }, error => {
           reject(error);
         });
@@ -32,8 +43,8 @@ export class UserData {
 
     return new Promise((resolve, reject) => {
       userQuery.first()
-        .then(data => {
-          resolve(data);
+        .then(user => {
+          resolve(user);
         }, error => {
           reject(error);
         });
