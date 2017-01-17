@@ -1,14 +1,16 @@
 {
   "button.cancel": "Cancelar",
   "button.forgot-password": "¿Olvidaste tu contraseña?",
-  "button.login": "Iniciar sesión",
   "button.signup": "Regístrate",
-  "input-error.max-length": "Tu nombre de usuario debe ser de 20 caracteres o menos.",
+  "button.login": "Iniciar Sesión",
+  "input-error.max-length": "Tu nombre de usuario debe ser de 15 caracteres o menos.",
   "input-error.unique-email": "Este correo electrónico ya está siendo utilizado.",
   "input-error.unique-username": "Este nombre de usuario ya está siendo utilizado.",
   "ion-input.placeholder.email": "Correo electrónico",
   "ion-input.placeholder.password": "Contraseña",
   "ion-input.placeholder.username": "Nombre de usuario",
   "login-page.title": "Iniciar sesión en Tuymn",
-  "signup-page.title": "Únete hoy a Tuymn"
+  "signup-page.title": "Únete hoy a Tuymn",
+  "welcome-page.title": "Bienvenido a Tuymn",
+  "welcome-page.subtitle": "Disfruta de tus himnos cristianos como nunca antes."
 }

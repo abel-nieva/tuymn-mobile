@@ -22,6 +22,7 @@ import { SignupPage } from '../pages/signup/signup';
 import { TabsPage } from '../pages/tabs/tabs';
 import { WelcomePage } from '../pages/welcome/welcome';
 
+import { FailHandler } from '../providers/fail-handler';
 import { HymnalProvider } from '../providers/hymnal';
 import { HymnProvider } from '../providers/hymn';
 import { UserData } from '../providers/user-data';
@@ -76,12 +77,14 @@ export function createTranslateLoader(http: Http) {
       provide: ErrorHandler,
       useClass: IonicErrorHandler
     },
+    FailHandler,
     HymnalProvider,
     HymnProvider,
     UserData
   ]
 })
 export class AppModule {
+
   private appId: string = ')+A8?.Q^Nawmh*Aa';
   private serverURL: string = 'https://tuymn-parse.herokuapp.com/parse';
 

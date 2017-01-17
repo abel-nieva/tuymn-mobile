@@ -15,6 +15,10 @@ export class WelcomePage {
     public modalCtrl: ModalController
   ) {}
 
+  // ---
+  // PUBLIC METHODS.
+  // ---
+
   public presentLogin() {
     this.modalCtrl.create(LoginPage).present();
   }

@@ -1,9 +1,9 @@
 import { Directive, forwardRef } from '@angular/core';
-import { NG_ASYNC_VALIDATORS, Validator, AbstractControl } from '@angular/forms';
-
-import { UserData } from '../../providers/user-data';
-
+import { NG_ASYNC_VALIDATORS, Validator, AbstractControl, ValidatorFn } from '@angular/forms';
 import { Observable } from 'rxjs/Rx';
+
+import { FailHandler } from '../../providers/fail-handler';
+import { UserData } from '../../providers/user-data';
 
 @Directive({
   selector: '[unique-username][formControlName], [unique-username][ngModel]',
@@ -18,12 +18,21 @@ import { Observable } from 'rxjs/Rx';
 export class UniqueUsernameDirective implements Validator {
 
   constructor(
+    private failHandler: FailHandler,
     private userData: UserData
   ) {}
 
-  validate(control: AbstractControl): Observable<{[key: string]: any}> {
+  // ---
+  // PUBLIC METHODS.
+  // ---
+
+  public validate(control: AbstractControl): Observable<{[key: string]: any}> {
     return this.validateUniqueUsername(control.value).debounceTime(500).distinctUntilChanged().first();
   }
+
+  // ---
+  // PRIVATE METHODS.
+  // ---
 
   private validateUniqueUsername(username) {
     return new Observable(observer => {
@@ -36,7 +45,8 @@ export class UniqueUsernameDirective implements Validator {
           } else {
             observer.next(null);
           }
-        });
+        })
+        .catch(this.failHandler.handle);
     });
   }
 

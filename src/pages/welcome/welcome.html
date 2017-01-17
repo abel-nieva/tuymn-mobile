@@ -13,10 +13,11 @@
 <ion-footer no-border padding>
   <ion-row>
     <ion-col width-80 offset-10>
-      <h1>Bienvenido a Tuymn</h1>
-      <p margin-bottom padding-bottom>Disfruta de tus himnos cristianos como nunca antes.</p>
-      <button ion-button color="light" block margin-bottom large (click)="presentSignup()">Regístrate</button>
-      <button ion-button color="light" block clear large (click)="presentLogin()">Iniciar Sesión</button>
+      <h1>{{ 'welcome-page.title' | translate }}</h1>
+      <p margin-bottom padding-bottom>{{ 'welcome-page.subtitle' | translate }}</p>
+      <button ion-button block large margin-bottom color="light" (click)="presentSignup()">
+        {{ 'button.signup' | translate }}</button>
+      <button ion-button color="light" block clear large (click)="presentLogin()">{{ 'button.login' | translate }}</button>
     </ion-col>
   </ion-row>
 </ion-footer>
