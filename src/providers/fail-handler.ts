@@ -1,4 +1,4 @@
-import { Injectable, Inject, forwardRef } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { AlertController } from 'ionic-angular';
 import { TranslateService } from 'ng2-translate';
 
@@ -30,7 +30,6 @@ export class FailHandler {
   // ---
 
   connectionFailed() {
-    let data;
     this.transalteService.get('button.login')
       .catch(data => {
         return data;

@@ -13,11 +13,14 @@ page-signup {
     .has-error {
         color: color($colors, danger);
     }
-    .spinner {
-        height: 27px;
-    }
-    .item [item-right] {
-        font-size: 2.4rem;
-        margin: 0 8px;
+    .item {
+        .spinner {
+            height: 27px;
+            margin: 0 4px;
+        }
+        .icon {
+            font-size: 2.4rem;
+            margin: 4px 8px 0 0;
+        }
     }
 }

@@ -12,6 +12,7 @@ import { UserData } from '../../providers/user-data';
 export class SignupPage {
 
   private emailRegex: RegExp;
+  private usernameRegex: RegExp;
   public email: FormControl;
   public password: FormControl;
   public signupForm: FormGroup;
@@ -25,6 +26,7 @@ export class SignupPage {
     public viewCtrl: ViewController
   ) {
     this.emailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    this.usernameRegex = /^[a-zA-Z0-9_]{1,15}$/;
     this.buildFormControls();
     this.signupForm = this.formBuilder.group({
       email: this.email,
@@ -44,9 +46,9 @@ export class SignupPage {
 
     loading.present();
     this.userData.signUp(
-      this.signupForm.value.email,
+      this.signupForm.value.username,
       this.signupForm.value.password,
-      this.signupForm.value.username
+      this.signupForm.value.email
     )
       .then(data => {
         this.navCtrl.setRoot(TabsPage);
@@ -71,8 +73,9 @@ export class SignupPage {
       '',
       Validators.compose([
         Validators.required,
+        Validators.minLength(5),
         Validators.maxLength(15),
-        Validators.minLength(5)
+        Validators.pattern(this.usernameRegex)
       ])
     );
     this.email = new FormControl(

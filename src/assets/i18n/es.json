@@ -3,7 +3,7 @@
   "button.forgot-password": "¿Olvidaste tu contraseña?",
   "button.signup": "Regístrate",
   "button.login": "Iniciar Sesión",
-  "input-error.max-length": "Tu nombre de usuario debe ser de 15 caracteres o menos.",
+  "input-error.pattern-username": "Tu nombre de usuario debe tener 15 caracteres o menos y contener sólo letras, números, guiones bajos y sin espacios.",
   "input-error.unique-email": "Este correo electrónico ya está siendo utilizado.",
   "input-error.unique-username": "Este nombre de usuario ya está siendo utilizado.",
   "ion-input.placeholder.email": "Correo electrónico",

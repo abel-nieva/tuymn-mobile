@@ -1,5 +1,5 @@
 import { Directive, forwardRef } from '@angular/core';
-import { NG_ASYNC_VALIDATORS, Validator, AbstractControl, ValidatorFn } from '@angular/forms';
+import { NG_ASYNC_VALIDATORS, Validator, AbstractControl } from '@angular/forms';
 import { Observable } from 'rxjs/Rx';
 
 import { FailHandler } from '../../providers/fail-handler';

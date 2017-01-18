@@ -17,15 +17,16 @@
   <h4 padding>{{ 'signup-page.title' | translate }}</h4>
 
   <form [formGroup]="signupForm">
-    <ion-item [ngClass]="{ 'has-error': username.errors?.uniqueUsername || username.errors?.maxlength }">
-      <ion-input disallow-spaces unique-username autofocus type="text"
-        placeholder="{{ 'ion-input.placeholder.username' | translate }}" formControlName="username"></ion-input>
+    <ion-item [ngClass]="{ 'has-error': username.errors?.uniqueUsername || username.errors?.pattern || username.errors?.maxlength }">
+      <ion-input unique-username autofocus type="text" placeholder="{{ 'ion-input.placeholder.username' | translate }}"
+        formControlName="username" maxlength="15"></ion-input>
       <ion-spinner *ngIf="username.pending" item-right name="ios-small"></ion-spinner>
-      <ion-icon *ngIf="username.errors?.uniqueUsername || username.errors?.maxlength" item-right name="alert"></ion-icon>
+      <ion-icon *ngIf="username.errors?.uniqueUsername || username.errors?.pattern" item-right name="alert"></ion-icon>
       <ion-icon *ngIf="username.valid" item-right name="checkmark-circle-outline" color="success"></ion-icon>
     </ion-item>
     <input-error *ngIf="username.errors?.uniqueUsername" [errorMessage]="'input-error.unique-username' | translate"></input-error>
-    <input-error *ngIf="username.errors?.maxlength" [errorMessage]="'input-error.max-length' | translate"></input-error>
+    <input-error *ngIf="username.errors?.pattern || username.errors?.maxlength"
+      [errorMessage]="'input-error.pattern-username' | translate"></input-error>
 
     <ion-item [ngClass]="{ 'has-error': email.errors?.uniqueEmail }">
       <ion-input unique-email type="email" placeholder="{{ 'ion-input.placeholder.email' | translate }}" formControlName="email"></ion-input>

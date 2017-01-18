@@ -85,12 +85,13 @@ export function createTranslateLoader(http: Http) {
 })
 export class AppModule {
 
-  private appId: string = ')+A8?.Q^Nawmh*Aa';
-  private serverURL: string = 'https://tuymn-parse.herokuapp.com/parse';
+  private APP_ID: string = 'QF8buyf4MSwhouHy45Oql5nuukJTdSvu8jv6oZiI';
+  private JAVASCRIPT_KEY: string = 'DsIrvyqae5NvIjcu7x43ZpXybONdYSaw4BixXTpe';
+  private SERVER_URL: string = 'https://parseapi.back4app.com';
 
   constructor() {
-    Parse.initialize(this.appId);
-    Parse.serverURL = this.serverURL;
+    Parse.initialize(this.APP_ID, this.JAVASCRIPT_KEY);
+    Parse.serverURL = this.SERVER_URL;
   }
 
 }
