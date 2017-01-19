@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams, ViewController } from 'ionic-angular';
 
-import { HymnalProvider } from '../../providers/hymnal';
+import { HymnalData } from '../../providers/hymnal-data';
 
 @Component({
   selector: 'page-hymnal-list',
@@ -15,11 +15,11 @@ export class HymnalListPage {
     public navCtrl: NavController,
     public navParams: NavParams,
     private viewCtrl: ViewController,
-    private hymnalProvider: HymnalProvider
+    private hymnalData: HymnalData
     ) {}
 
   ionViewDidLoad() {
-    this.hymnalProvider.getHymnals()
+    this.hymnalData.getHymnals()
       .then((response: any) => {
         this.hymnalList = response;
       }, error => {

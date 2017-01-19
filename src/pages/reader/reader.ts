@@ -4,8 +4,8 @@ import { NavController, NavParams, LoadingController, ModalController, AlertCont
 import { HymnListPage } from '../hymn-list/hymn-list';
 import { HymnalListPage } from '../hymnal-list/hymnal-list';
 
-import { HymnalProvider } from '../../providers/hymnal';
-import { HymnProvider } from '../../providers/hymn';
+import { HymnalData } from '../../providers/hymnal-data';
+import { HymnData } from '../../providers/hymn-data';
 
 @Component({
   selector: 'page-reader',
@@ -24,8 +24,8 @@ export class ReaderPage {
     private loadingCtrl: LoadingController,
     private modalCtrl: ModalController,
     private alertCtrl: AlertController,
-    private hymnalProvider: HymnalProvider,
-    private hymnProvider: HymnProvider
+    private hymnalData: HymnalData,
+    private hymnData: HymnData
   ) {}
 
   ionViewDidLoad() {
@@ -34,14 +34,14 @@ export class ReaderPage {
     });
 
     loading.present();
-    this.hymnalProvider.getFirst()
+    this.hymnalData.getFirst()
       .then((response: any) => {
         this.readerHymnalObj = response;
         this.readerHymnal = response.toJSON();
-        this.hymnProvider.getFirst(response)
+        this.hymnData.getFirst(response)
           .then((response: any) => {
             loading.dismiss();
-            this.readerHymn = this.hymnProvider.parse(response.toJSON());
+            this.readerHymn = this.hymnData.parse(response.toJSON());
           }, error => {
             loading.dismiss();
             console.log(error);
@@ -60,7 +60,7 @@ export class ReaderPage {
 
     hymnListModal.onDidDismiss(hymn => {
       if (!!hymn && hymn.objectId != this.readerHymn.objectId) {
-        this.readerHymn = this.hymnProvider.parse(hymn);
+        this.readerHymn = this.hymnData.parse(hymn);
       }
     });
     hymnListModal.present();
@@ -73,9 +73,9 @@ export class ReaderPage {
       if (!!hymnal && hymnal.id != this.readerHymnal.objectId) {
         this.readerHymnalObj = hymnal;
         this.readerHymnal = hymnal.toJSON();
-        this.hymnProvider.getFirst(this.readerHymnalObj)
+        this.hymnData.getFirst(this.readerHymnalObj)
           .then((response: any) => {
-            this.readerHymn = this.hymnProvider.parse(response.toJSON());
+            this.readerHymn = this.hymnData.parse(response.toJSON());
           }, error => {
             console.log(error);
           });
@@ -97,9 +97,9 @@ export class ReaderPage {
   }
 
   private getHymnByNumber(number): void {
-    this.hymnProvider.getHymnByNumber(number)
+    this.hymnData.getHymnByNumber(number)
       .then((result: any) => {
-        this.readerHymn = this.hymnProvider.parse(result.toJSON());
+        this.readerHymn = this.hymnData.parse(result.toJSON());
         this.scrollToTop();
       }, error => {
         console.log(error);

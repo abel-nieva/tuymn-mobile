@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import Parse from 'parse';
 
 @Injectable()
-export class HymnProvider {
+export class HymnData {
 
   constructor() {}
 

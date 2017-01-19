@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams, ViewController } from 'ionic-angular';
 
-import { HymnProvider } from '../../providers/hymn';
+import { HymnData } from '../../providers/hymn-data';
 
 @Component({
   selector: 'page-hymn-list',
@@ -17,14 +17,14 @@ export class HymnListPage {
     public navCtrl: NavController,
     public navParams: NavParams,
     private viewCtrl: ViewController,
-    private hymnProvider: HymnProvider
+    private hymnData: HymnData
   ) {
     this.readerHymn = this.navParams.get('readerHymn');
     this.readerHymnal = this.navParams.get('readerHymnal');
   }
 
   ionViewDidLoad() {
-    this.hymnProvider.getHymnsByHymnal(this.readerHymnal)
+    this.hymnData.getHymnsByHymnal(this.readerHymnal)
       .then((results: any) => {
         this.hymnList = results;
       }, error => {

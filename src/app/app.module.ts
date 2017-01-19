@@ -23,8 +23,8 @@ import { TabsPage } from '../pages/tabs/tabs';
 import { WelcomePage } from '../pages/welcome/welcome';
 
 import { FailHandler } from '../providers/fail-handler';
-import { HymnalProvider } from '../providers/hymnal';
-import { HymnProvider } from '../providers/hymn';
+import { HymnalData } from '../providers/hymnal-data';
+import { HymnData } from '../providers/hymn-data';
 import { UserData } from '../providers/user-data';
 
 import Parse from 'parse';
@@ -78,8 +78,8 @@ export function createTranslateLoader(http: Http) {
       useClass: IonicErrorHandler
     },
     FailHandler,
-    HymnalProvider,
-    HymnProvider,
+    HymnalData,
+    HymnData,
     UserData
   ]
 })

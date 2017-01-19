@@ -16,12 +16,12 @@ export class FailHandler {
   // PUBLIC METHODS.
   // ---
 
-  public handle(error) {
+  handle(error) {
     switch (error.code) {
       case this.CONNECTION_FAILED:
         this.connectionFailed();
         break;
-  
+
       default:
         break;
     }

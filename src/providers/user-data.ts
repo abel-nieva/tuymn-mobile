@@ -7,6 +7,10 @@ export class UserData {
 
   constructor() {}
 
+  // ---
+  // PUBLIC METHODS.
+  // ---
+
   signUp(username: string, password: string, email: string): Promise<Parse.Object> {
     let User = new Parse.User();
 
@@ -36,8 +40,7 @@ export class UserData {
   }
 
   getByUsername(username: string): Promise<Parse.Object> {
-    let User = Parse.Object.extend('User');
-    let userQuery = new Parse.Query(User);
+    let userQuery = this.getUserQuery();
 
     userQuery.equalTo('username', username);
 
@@ -52,8 +55,7 @@ export class UserData {
   }
 
   getByEmail(email: string): Promise<Parse.Object> {
-    let User = Parse.Object.extend('User');
-    let userQuery = new Parse.Query(User);
+    let userQuery = this.getUserQuery();
 
     userQuery.equalTo('email', email);
 
@@ -65,6 +67,15 @@ export class UserData {
           reject(error);
         });
     });
+  }
+
+  // ---
+  // PRIVATE METHODS.
+  // ---
+
+  private getUserQuery(): Parse.Query {
+    let User = Parse.Object.extend('User');
+    return new Parse.Query(User);
   }
 
 }
