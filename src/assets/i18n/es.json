@@ -1,8 +1,12 @@
 {
+  "alert.connection-failed.message": "No podemos acceder a nuestra red ahora mismo. Comprueba tu conexión.",
+  "alert.connection-failed.title": "No hay conexión",
+  "button.accept": "Aceptar",
   "button.cancel": "Cancelar",
+  "button.done": "Hecho",
   "button.forgot-password": "¿Olvidaste tu contraseña?",
-  "button.signup": "Regístrate",
   "button.login": "Iniciar Sesión",
+  "button.signup": "Regístrate",
   "input-error.pattern-username": "Tu nombre de usuario debe tener 15 caracteres o menos y contener sólo letras, números, guiones bajos y sin espacios.",
   "input-error.unique-email": "Este correo electrónico ya está siendo utilizado.",
   "input-error.unique-username": "Este nombre de usuario ya está siendo utilizado.",
@@ -11,6 +15,6 @@
   "ion-input.placeholder.username": "Nombre de usuario",
   "login-page.title": "Iniciar sesión en Tuymn",
   "signup-page.title": "Únete hoy a Tuymn",
-  "welcome-page.title": "Bienvenido a Tuymn",
-  "welcome-page.subtitle": "Disfruta de tus himnos cristianos como nunca antes."
+  "welcome-page.subtitle": "Disfruta de tus himnos cristianos como nunca antes.",
+  "welcome-page.title": "Bienvenido a Tuymn"
 }

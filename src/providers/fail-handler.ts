@@ -5,6 +5,8 @@ import { TranslateService } from 'ng2-translate';
 @Injectable()
 export class FailHandler {
 
+  private CONNECTION_FAILED: number = 100;
+
   constructor(
     private alertCtrl: AlertController,
     private transalteService: TranslateService
@@ -14,12 +16,12 @@ export class FailHandler {
   // PUBLIC METHODS.
   // ---
 
-  handle(error) {
+  public handle(error) {
     switch (error.code) {
-      case 100:
+      case this.CONNECTION_FAILED:
         this.connectionFailed();
         break;
-    
+  
       default:
         break;
     }
@@ -29,30 +31,25 @@ export class FailHandler {
   // PRIVATE METHODS.
   // ---
 
-  connectionFailed() {
-    this.transalteService.get('button.login')
-      .catch(data => {
-        return data;
+  private connectionFailed() {
+    this.transalteService.get([
+      'alert.connection-failed.title',
+      'alert.connection-failed.message',
+      'button.accept'
+    ])
+      .subscribe(translates => {
+          this.alertCtrl
+            .create({
+              title: translates['alert.connection-failed.title'],
+              message: translates['alert.connection-failed.message'],
+              buttons: [
+                {
+                  text: translates['button.accept'],
+                }
+              ]
+            })
+            .present();
       });
-    // let alert = this.alertCtrl.create({
-    //   title: 'No hay conexión',
-    //   message: data,//'Lo sentimos, en este momento Tuymn no puede conectarse con el servidor. Por favor, revisa la conexión a Internet e inténtalo de nuevo más tarde.',
-    //   buttons: [
-    //     {
-    //       text: 'Ignorar',
-    //       handler: () => {
-
-    //       }
-    //     },
-    //     {
-    //       text: 'Reintentar',
-    //       handler: () => {
-
-    //       }
-    //     }
-    //   ]
-    // });
-    // alert.present();
   }
 
 }

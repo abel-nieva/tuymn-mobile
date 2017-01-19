@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Validators, FormBuilder, FormGroup, FormControl } from '@angular/forms';
 import { NavController, ViewController, LoadingController } from 'ionic-angular';
 
+import { FailHandler } from '../../providers/fail-handler';
 import { TabsPage } from '../tabs/tabs';
 import { UserData } from '../../providers/user-data';
 
@@ -19,6 +20,7 @@ export class SignupPage {
   public username: FormControl;
 
   constructor(
+    private failHandler: FailHandler,
     private formBuilder: FormBuilder,
     private userData: UserData,
     public loadingCtrl: LoadingController,
@@ -46,17 +48,17 @@ export class SignupPage {
 
     loading.present();
     this.userData.signUp(
-      this.signupForm.value.username,
+      this.signupForm.value.email,
       this.signupForm.value.password,
-      this.signupForm.value.email
+      this.signupForm.value.username
     )
       .then(data => {
-        this.navCtrl.setRoot(TabsPage);
         loading.dismiss();
+        this.navCtrl.setRoot(TabsPage);
       })
       .catch(error => {
-        console.log(error);
         loading.dismiss();
+        this.failHandler.handle(error);
       });
   }
 
