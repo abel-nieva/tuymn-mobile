@@ -31,9 +31,9 @@ export class SignupPage {
     this.usernameRegex = /^[a-zA-Z0-9_]{1,15}$/;
     this.buildFormControls();
     this.signupForm = this.formBuilder.group({
-      email: this.email,
+      username: this.username,
       password: this.password,
-      username: this.username
+      email: this.email
     });
   }
 
@@ -42,17 +42,15 @@ export class SignupPage {
   // ---
 
   public onSubmit() {
-    let loading = this.loadingCtrl.create({
-      showBackdrop: false
-    });
+    let loading = this.loadingCtrl.create({showBackdrop: false});
 
     loading.present();
     this.userData.signUp(
-      this.signupForm.value.email,
+      this.signupForm.value.username,
       this.signupForm.value.password,
-      this.signupForm.value.username
+      this.signupForm.value.email
     )
-      .then(data => {
+      .then(user => {
         loading.dismiss();
         this.navCtrl.setRoot(TabsPage);
       })

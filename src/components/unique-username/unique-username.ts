@@ -2,7 +2,6 @@ import { Directive, forwardRef } from '@angular/core';
 import { NG_ASYNC_VALIDATORS, Validator, AbstractControl } from '@angular/forms';
 import { Observable } from 'rxjs/Rx';
 
-import { FailHandler } from '../../providers/fail-handler';
 import { UserData } from '../../providers/user-data';
 
 @Directive({
@@ -18,7 +17,6 @@ import { UserData } from '../../providers/user-data';
 export class UniqueUsernameDirective implements Validator {
 
   constructor(
-    private failHandler: FailHandler,
     private userData: UserData
   ) {}
 
@@ -37,16 +35,16 @@ export class UniqueUsernameDirective implements Validator {
   private validateUniqueUsername(username) {
     return new Observable(observer => {
       this.userData.getByUsername(username)
-        .then(result => {
-          if (result) {
-            observer.next({
-              uniqueUsername: true
-            });
-          } else {
-            observer.next(null);
+        .then(user => {
+          if (user) {
+            observer.next({uniqueUsername: true});
+            return;
           }
+          observer.next(null);
         })
-        .catch(this.failHandler.handle);
+        .catch(error => {
+          observer.next(null);
+        });
     });
   }
 

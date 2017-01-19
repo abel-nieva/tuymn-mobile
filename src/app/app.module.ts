@@ -5,7 +5,6 @@ import { TranslateModule, TranslateLoader, TranslateStaticLoader } from 'ng2-tra
 
 import { MyApp } from './app.component';
 
-import { DisallowSpacesDirective } from '../components/disallow-spaces/disallow-spaces';
 import { UniqueEmailDirective } from '../components/unique-email/unique-email';
 import { UniqueUsernameDirective } from '../components/unique-username/unique-username';
 
@@ -36,7 +35,6 @@ export function createTranslateLoader(http: Http) {
 @NgModule({
   declarations: [
     MyApp,
-    DisallowSpacesDirective,
     UniqueEmailDirective,
     UniqueUsernameDirective,
     HymnalSheetComponent,

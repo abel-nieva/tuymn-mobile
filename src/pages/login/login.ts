@@ -2,8 +2,9 @@ import { Component } from '@angular/core';
 import { NavController, NavParams, ViewController, LoadingController } from 'ionic-angular';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 
-import { UserData } from '../../providers/user-data';
+import { FailHandler } from '../../providers/fail-handler';
 import { TabsPage } from '../tabs/tabs';
+import { UserData } from '../../providers/user-data';
 
 @Component({
   selector: 'page-login',
@@ -16,6 +17,7 @@ export class LoginPage {
   public password: FormControl;
 
   constructor(
+    private failHandler: FailHandler,
     private formBuilder: FormBuilder,
     private loadingCtrl: LoadingController,
     public navCtrl: NavController,
@@ -23,53 +25,38 @@ export class LoginPage {
     public userData: UserData,
     public viewCtrl: ViewController
   ) {
-    this.buildFormControls();
+    this.username = new FormControl('', Validators.required);
+    this.password = new FormControl('', Validators.required);
     this.logInForm = this.formBuilder.group({
       username: this.username,
       password: this.password
     });
   }
 
-  public dismissPage() {
-    this.viewCtrl.dismiss();
-  }
+  // ---
+  // PUBLIC METHODS.
+  // ---
 
   public onSubmit() {
-    let loading = this.loadingCtrl.create({
-      showBackdrop: false
-    });
+    let loading = this.loadingCtrl.create({showBackdrop: false});
 
     loading.present();
-
     this.userData.logIn(
       this.logInForm.value.username,
       this.logInForm.value.password
     )
       .then(user => {
-        this.navCtrl.setRoot(TabsPage);
         loading.dismiss();
+        this.navCtrl.setRoot(TabsPage);
       })
       .catch(error => {
-        console.log(error);
         loading.dismiss();
+        this.failHandler.handle(error);
       });
   }
 
-  private buildFormControls() {
-    this.username = new FormControl(
-      '',
-      Validators.compose([
-        Validators.required,
-        Validators.maxLength(20)
-      ])
-    );
-    this.password = new FormControl(
-      '',
-      Validators.compose([
-        Validators.required,
-        Validators.minLength(6)
-      ])
-    );
+  public dismiss() {
+    this.viewCtrl.dismiss();
   }
 
 }

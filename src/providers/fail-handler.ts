@@ -6,6 +6,9 @@ import { TranslateService } from 'ng2-translate';
 export class FailHandler {
 
   private CONNECTION_FAILED: number = 100;
+  private USER_INVALID_LOGIN_PARAMS: number = 101;
+  private USERNAME_TAKEN: number = 202;
+  private USER_EMAIL_TAKEN: number = 203;
 
   constructor(
     private alertCtrl: AlertController,
@@ -16,13 +19,22 @@ export class FailHandler {
   // PUBLIC METHODS.
   // ---
 
-  handle(error) {
+  public handle(error) {
     switch (error.code) {
       case this.CONNECTION_FAILED:
-        this.connectionFailed();
+        this.presentAlert('alert.connection-failed.message');
         break;
-
+      case this.USER_INVALID_LOGIN_PARAMS:
+        this.presentAlert('alert.user-invalid-login-params.message');
+        break;
+      case this.USERNAME_TAKEN:
+        this.presentAlert('alert.username-taken.message');
+        break;
+      case this.USER_EMAIL_TAKEN:
+        this.presentAlert('alert.user-email-taken.message');
+        break;
       default:
+        this.presentAlert('alert.default.message');
         break;
     }
   }
@@ -31,22 +43,14 @@ export class FailHandler {
   // PRIVATE METHODS.
   // ---
 
-  private connectionFailed() {
-    this.transalteService.get([
-      'alert.connection-failed.title',
-      'alert.connection-failed.message',
-      'button.accept'
-    ])
+  private presentAlert(message: string) {
+    this.transalteService.get(['alert.title', message, 'button.accept'])
       .subscribe(translates => {
           this.alertCtrl
             .create({
-              title: translates['alert.connection-failed.title'],
-              message: translates['alert.connection-failed.message'],
-              buttons: [
-                {
-                  text: translates['button.accept'],
-                }
-              ]
+              title: translates['alert.title'],
+              message: translates[message],
+              buttons: [{text: translates['button.accept']}]
             })
             .present();
       });

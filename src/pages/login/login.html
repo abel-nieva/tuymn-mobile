@@ -5,7 +5,7 @@
     <ion-title><span ion-text class="tuy-icon-icon" color="primary"></span></ion-title>
 
     <ion-buttons start>
-      <button ion-button (click)="dismissPage()">
+      <button ion-button (click)="dismiss()">
         <span ion-text color="dark" showWhen="ios">{{ 'button.cancel' | translate }}</span>
         <ion-icon name="md-close" showWhen="android,windows"></ion-icon>
       </button>
@@ -22,12 +22,10 @@
 
   <form [formGroup]="logInForm">
 
-    <ion-item [ngClass]="{ 'has-error': username.errors?.maxlength }">
-      <ion-input disallow-spaces autofocus type="text" placeholder="{{ 'ion-input.placeholder.username' | translate }}"
+    <ion-item>
+      <ion-input autofocus type="text" placeholder="{{ 'ion-input.placeholder.username' | translate }}"
         formControlName="username"></ion-input>
-      <ion-icon *ngIf="username.errors?.maxlength" item-right name="alert"></ion-icon>
     </ion-item>
-    <input-error *ngIf="username.errors?.maxlength" [errorMessage]="'input-error.max-length' | translate"></input-error>
 
     <ion-item margin-bottom>
       <ion-input type="password" placeholder="{{ 'ion-input.placeholder.password' | translate }}"

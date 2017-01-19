@@ -1,6 +1,10 @@
 {
-  "alert.connection-failed.message": "No podemos acceder a nuestra red ahora mismo. Comprueba tu conexión.",
-  "alert.connection-failed.title": "No hay conexión",
+  "alert.connection-failed.message": "Parece ser que no hay conexión a Internet. Por favor, comprueba tu conexión e inténtalo de nuevo.",
+  "alert.default.message": "Ocurrió un error. Por favor, inténtelo de nuevo más tarde.",
+  "alert.title": "Error",
+  "alert.user-email-taken.message": "Esta dirección de correo electrónico ya está registrada.",
+  "alert.user-invalid-login-params.message": "El nombre de usuario y contraseña introducidos no coinciden con nuestros registros. Revísalos e inténtalo de nuevo.",
+  "alert.username-taken.message": "Este nombre de usuario ya está registrado.",
   "button.accept": "Aceptar",
   "button.cancel": "Cancelar",
   "button.done": "Hecho",
