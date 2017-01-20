@@ -7,6 +7,7 @@
   "alert.user-with-email-not-found.message": "El correo electrónico introducido no coincide con nuestros registros. Revísalo e inténtalo de nuevo.",
   "alert.username-taken.message": "Este nombre de usuario ya está registrado.",
   "button.accept": "Aceptar",
+  "button.back": "Volver",
   "button.cancel": "Cancelar",
   "button.done": "Hecho",
   "button.forgot-password": "¿Olvidaste tu contraseña?",

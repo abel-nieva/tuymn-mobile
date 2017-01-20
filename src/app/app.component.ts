@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Platform } from 'ionic-angular';
+import { Platform, Config } from 'ionic-angular';
 import { StatusBar, Splashscreen } from 'ionic-native';
 import { TranslateService } from 'ng2-translate';
 
@@ -16,11 +16,15 @@ export class MyApp implements OnInit {
   public rootPage: any;
 
   constructor(
+    private config: Config,
     private platform: Platform,
+    private transalteService: TranslateService,
     private translateService: TranslateService
   ) {
     this.translateService.setDefaultLang('es');
     this.translateService.use('es');
+
+    this.configApp();
 
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
@@ -38,6 +42,19 @@ export class MyApp implements OnInit {
         } else {
           this.rootPage = WelcomePage;
         }
+      });
+  }
+
+  // ---
+  // PRIVATE METHODS.
+  // ---
+
+  private configApp() {
+    this.transalteService.get([
+      'button.back'
+    ])
+      .subscribe(translates => {
+          this.config.set('backButtonText', translates['button.back'])
       });
   }
 

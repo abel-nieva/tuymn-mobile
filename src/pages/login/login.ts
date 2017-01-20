@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, ViewController, LoadingController, ModalController } from 'ionic-angular';
+import { NavController, NavParams, ViewController, LoadingController } from 'ionic-angular';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 
 import { FailHandler } from '../../providers/fail-handler';
@@ -16,17 +16,18 @@ export class LoginPage {
   public logInForm: FormGroup;
   public username: FormControl;
   public password: FormControl;
+  public sendPasswordResetPage: any;
 
   constructor(
     private failHandler: FailHandler,
     private formBuilder: FormBuilder,
     private loadingCtrl: LoadingController,
-    private modalCtrl: ModalController,
     public navCtrl: NavController,
     public navParams: NavParams,
     public userData: UserData,
     public viewCtrl: ViewController
   ) {
+    this.sendPasswordResetPage = SendPasswordResetPage;
     this.username = new FormControl('', Validators.required);
     this.password = new FormControl('', Validators.required);
     this.logInForm = this.formBuilder.group({
@@ -55,15 +56,6 @@ export class LoginPage {
         loading.dismiss();
         this.failHandler.handle(error);
       });
-  }
-
-  public presentSendPasswordReset() {
-    this.dismiss();
-    this.modalCtrl.create(SendPasswordResetPage).present();
-  }
-
-  public dismiss() {
-    this.viewCtrl.dismiss();
   }
 
 }

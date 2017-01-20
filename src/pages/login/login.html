@@ -1,16 +1,7 @@
-<ion-header no-border padding-top>
+<ion-header no-border>
 
   <ion-navbar color="white">
-
     <ion-title><span ion-text class="tuy-icon-icon" color="primary"></span></ion-title>
-
-    <ion-buttons start>
-      <button ion-button (click)="dismiss()">
-        <span ion-text color="dark" showWhen="ios">{{ 'button.cancel' | translate }}</span>
-        <ion-icon name="md-close" showWhen="android,windows"></ion-icon>
-      </button>
-    </ion-buttons>
-
   </ion-navbar>
 
 </ion-header>
@@ -40,8 +31,8 @@
 <ion-footer text-right>
 
   <ion-toolbar color="white" padding-horizontal>
-      <button ion-button clear small color="primary" (click)="presentSendPasswordReset()">{{ 'button.forgot-password' | translate }}</button>
-      <button ion-button small color="primary" [disabled]="!logInForm.valid" (click)="onSubmit()">{{ 'button.login' | translate }}</button>
+    <button ion-button clear small color="primary" [navPush]="sendPasswordResetPage">{{ 'button.forgot-password' | translate }}</button>
+    <button ion-button small color="primary" [disabled]="!logInForm.valid" (click)="onSubmit()">{{ 'button.login' | translate }}</button>
   </ion-toolbar>
 
 </ion-footer>

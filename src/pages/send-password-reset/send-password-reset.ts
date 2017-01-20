@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, ViewController, LoadingController, ModalController } from 'ionic-angular';
+import { NavController, NavParams, ViewController, LoadingController } from 'ionic-angular';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 
 import { FailHandler } from '../../providers/fail-handler';
@@ -20,7 +20,6 @@ export class SendPasswordResetPage {
     private failHandler: FailHandler,
     private formBuilder: FormBuilder,
     private loadingCtrl: LoadingController,
-    private modalCtrl: ModalController,
     public navCtrl: NavController,
     public navParams: NavParams,
     public userData: UserData,
@@ -50,7 +49,7 @@ export class SendPasswordResetPage {
     this.userData.requestPasswordReset(this.sendPasswordResetForm.value.email)
       .then(() => {
         loading.dismiss();
-        this.presentResetEmailSent();
+        this.pushResetEmailSent();
       })
       .catch(error => {
         loading.dismiss();
@@ -66,9 +65,8 @@ export class SendPasswordResetPage {
   // PRIVATE METHODS.
   // ---
 
-  private presentResetEmailSent() {
-    this.dismiss();
-    this.modalCtrl.create(ResetEmailSentPage, {email: this.sendPasswordResetForm.value.email}).present();
+  private pushResetEmailSent() {
+    this.navCtrl.push(ResetEmailSentPage, {email: this.sendPasswordResetForm.value.email});
   }
 
 }

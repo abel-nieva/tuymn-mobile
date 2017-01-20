@@ -24,7 +24,7 @@ export class ResetEmailSentPage {
   // ---
 
   public dismiss() {
-    this.viewCtrl.dismiss();
+    this.navCtrl.popToRoot();
   }
 
 }

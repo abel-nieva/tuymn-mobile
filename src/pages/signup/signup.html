@@ -1,19 +1,14 @@
-<ion-header no-border padding-top>
-  <ion-toolbar color="white">
-    <ion-title>
-      <span ion-text class="tuy-icon-icon" color="primary"></span>
-    </ion-title>
+<ion-header no-border>
 
-    <ion-buttons start>
-      <button ion-button (click)="dismiss()">
-        <span ion-text color="dark" showWhen="ios">{{ 'button.cancel' | translate }}</span>
-        <ion-icon name="md-close" showWhen="android,windows"></ion-icon>
-      </button>
-    </ion-buttons>
-  </ion-toolbar>
+  <ion-navbar color="white">
+    <ion-title><span ion-text class="tuy-icon-icon" color="primary"></span></ion-title>
+  </ion-navbar>
+
 </ion-header>
 
+
 <ion-content>
+
   <h4 padding>{{ 'signup-page.title' | translate }}</h4>
 
   <form [formGroup]="signupForm">
@@ -52,6 +47,7 @@
   </ion-row>
 
 </ion-content>
+
 
 <ion-footer text-right>
   <ion-toolbar color="white" padding-horizontal>
