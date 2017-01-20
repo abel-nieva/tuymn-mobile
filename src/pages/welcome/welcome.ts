@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, ModalController } from 'ionic-angular';
+import { NavController } from 'ionic-angular';
 
 import { LoginPage } from '../login/login';
 import { SignupPage } from '../signup/signup';
@@ -10,21 +10,14 @@ import { SignupPage } from '../signup/signup';
 })
 export class WelcomePage {
 
+  public signUpPage: any;
+  public loginPage: any;
+
   constructor(
-    public navCtrl: NavController,
-    public modalCtrl: ModalController
-  ) {}
-
-  // ---
-  // PUBLIC METHODS.
-  // ---
-
-  public presentLogin() {
-    this.modalCtrl.create(LoginPage).present();
-  }
-
-  public presentSignup() {
-    this.modalCtrl.create(SignupPage).present();
+    public navCtrl: NavController
+  ) {
+    this.signUpPage = SignupPage;
+    this.loginPage = LoginPage;
   }
 
 }

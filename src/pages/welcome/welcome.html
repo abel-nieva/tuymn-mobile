@@ -23,9 +23,9 @@
     <ion-col width-80 offset-10>
       <h1>{{ 'welcome-page.title' | translate }}</h1>
       <p margin-bottom padding-bottom>{{ 'welcome-page.subtitle' | translate }}</p>
-      <button ion-button block large margin-bottom color="light" (click)="presentSignup()">
+      <button ion-button block large margin-bottom color="light" [navPush]="signUpPage">
         {{ 'button.signup' | translate }}</button>
-      <button ion-button color="light" block clear large (click)="presentLogin()">{{ 'button.login' | translate }}</button>
+      <button ion-button color="light" block clear large [navPush]="loginPage">{{ 'button.login' | translate }}</button>
     </ion-col>
 
   </ion-row>
