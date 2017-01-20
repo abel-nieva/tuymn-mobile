@@ -17,6 +17,8 @@ import { HymnListPage } from '../pages/hymn-list/hymn-list';
 import { LoginPage } from '../pages/login/login';
 import { ProfilePage } from '../pages/profile/profile';
 import { ReaderPage } from '../pages/reader/reader';
+import { ResetEmailSentPage } from '../pages/reset-email-sent/reset-email-sent';
+import { SendPasswordResetPage } from '../pages/send-password-reset/send-password-reset';
 import { SignupPage } from '../pages/signup/signup';
 import { TabsPage } from '../pages/tabs/tabs';
 import { WelcomePage } from '../pages/welcome/welcome';
@@ -45,6 +47,8 @@ export function createTranslateLoader(http: Http) {
     LoginPage,
     ProfilePage,
     ReaderPage,
+    ResetEmailSentPage,
+    SendPasswordResetPage,
     SignupPage,
     TabsPage,
     WelcomePage
@@ -66,6 +70,8 @@ export function createTranslateLoader(http: Http) {
     LoginPage,
     ProfilePage,
     ReaderPage,
+    ResetEmailSentPage,
+    SendPasswordResetPage,
     SignupPage,
     TabsPage,
     WelcomePage

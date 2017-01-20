@@ -11,7 +11,7 @@ export class UserData {
   // PUBLIC METHODS.
   // ---
 
-  signUp(username: string, password: string, email: string): Promise<Parse.Object> {
+  public signUp(username: string, password: string, email: string): Promise<Parse.Object> {
     let User = new Parse.User();
 
     User.set('username', username);
@@ -28,7 +28,7 @@ export class UserData {
     });
   }
 
-  logIn(username: string, password: string): Promise<Parse.Object> {
+  public logIn(username: string, password: string): Promise<Parse.Object> {
     return new Promise((resolve, reject) => {
       Parse.User.logIn(username, password)
         .then(user => {
@@ -39,7 +39,18 @@ export class UserData {
     });
   }
 
-  getByUsername(username: string): Promise<Parse.Object> {
+  public requestPasswordReset(email: string): Promise<any> {
+    return new Promise((resolve, reject) => {
+      Parse.User.requestPasswordReset(email)
+        .then(() => {
+          resolve();
+        }, error => {
+          reject(error);
+        });
+    });
+  }
+
+  public getByUsername(username: string): Promise<Parse.Object> {
     let userQuery = this.getUserQuery();
 
     userQuery.equalTo('username', username);
@@ -54,7 +65,7 @@ export class UserData {
     });
   }
 
-  getByEmail(email: string): Promise<Parse.Object> {
+  public getByEmail(email: string): Promise<Parse.Object> {
     let userQuery = this.getUserQuery();
 
     userQuery.equalTo('email', email);

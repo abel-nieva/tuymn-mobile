@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, ViewController, LoadingController } from 'ionic-angular';
+import { NavController, NavParams, ViewController, LoadingController, ModalController } from 'ionic-angular';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 
 import { FailHandler } from '../../providers/fail-handler';
+import { SendPasswordResetPage } from '../send-password-reset/send-password-reset';
 import { TabsPage } from '../tabs/tabs';
 import { UserData } from '../../providers/user-data';
 
@@ -20,6 +21,7 @@ export class LoginPage {
     private failHandler: FailHandler,
     private formBuilder: FormBuilder,
     private loadingCtrl: LoadingController,
+    private modalCtrl: ModalController,
     public navCtrl: NavController,
     public navParams: NavParams,
     public userData: UserData,
@@ -53,6 +55,11 @@ export class LoginPage {
         loading.dismiss();
         this.failHandler.handle(error);
       });
+  }
+
+  public presentSendPasswordReset() {
+    this.dismiss();
+    this.modalCtrl.create(SendPasswordResetPage).present();
   }
 
   public dismiss() {

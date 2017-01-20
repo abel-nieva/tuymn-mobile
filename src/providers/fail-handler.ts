@@ -9,6 +9,7 @@ export class FailHandler {
   private USER_INVALID_LOGIN_PARAMS: number = 101;
   private USERNAME_TAKEN: number = 202;
   private USER_EMAIL_TAKEN: number = 203;
+  private USER_WITH_EMAIL_NOT_FOUND: number = 205;
 
   constructor(
     private alertCtrl: AlertController,
@@ -32,6 +33,9 @@ export class FailHandler {
         break;
       case this.USER_EMAIL_TAKEN:
         this.presentAlert('alert.user-email-taken.message');
+        break;
+      case this.USER_WITH_EMAIL_NOT_FOUND:
+        this.presentAlert('alert.user-with-email-not-found.message');
         break;
       default:
         this.presentAlert('alert.default.message');

@@ -42,8 +42,15 @@
     </ion-item>
   </form>
 
-  <div class="legal" padding-horizontal text-center><small>Al registrarte, estás aceptando las <strong>Condiciones de 
-    Servicio</strong> y la <strong>Política de Privacidad</strong>.</small></div>
+  <ion-row>
+
+    <ion-col width-80 offset-10 text-center>{{ 'signup-page.legal.one' | translate }}
+      <strong>{{ 'signup-page.legal.two' | translate }}</strong> {{ 'signup-page.legal.three' | translate }}
+      <strong>{{ 'signup-page.legal.four' | translate }}</strong>
+    </ion-col>
+
+  </ion-row>
+
 </ion-content>
 
 <ion-footer text-right>

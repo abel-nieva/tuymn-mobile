@@ -1,0 +1,22 @@
+<ion-header no-border>
+
+  <ion-navbar color="white">
+
+    <ion-title>{{ 'reset-email-sent-page.header.title' | translate }}</ion-title>
+
+    <ion-buttons start>
+      <button ion-button color="dark" (click)="dismiss()">{{ 'button.done' | translate }}</button>
+    </ion-buttons>
+
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding text-center>
+
+  <ion-icon name="send"></ion-icon>
+
+  <p [innerHTML]="'reset-email-sent-page.content' | translate:params"></p>
+
+</ion-content>

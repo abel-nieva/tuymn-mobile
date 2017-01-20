@@ -40,7 +40,7 @@
 <ion-footer text-right>
 
   <ion-toolbar color="white" padding-horizontal>
-      <button ion-button clear small color="primary">{{ 'button.forgot-password' | translate }}</button>
+      <button ion-button clear small color="primary" (click)="presentSendPasswordReset()">{{ 'button.forgot-password' | translate }}</button>
       <button ion-button small color="primary" [disabled]="!logInForm.valid" (click)="onSubmit()">{{ 'button.login' | translate }}</button>
   </ion-toolbar>
 
