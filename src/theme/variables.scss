@@ -24,7 +24,7 @@ $font-path: "../assets/fonts";
 // The "primary" color is the only required color in the map.
 
 $colors: (
-  primary:    #FF0033,
+  primary:    #B47BDA,
   secondary:  #458EFF,
   success:    #4cd964,
   info:       #007aff,
@@ -84,3 +84,4 @@ $colors: (
 
 @import "roboto";
 @import "noto-sans";
+@import "base.fonts";

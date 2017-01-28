@@ -35,14 +35,11 @@ export class MyApp implements OnInit {
   }
 
   ngOnInit() {
-    Parse.User.logOut()
-      .then(user => {
-        if (Parse.User.current()) {
-          this.rootPage = TabsPage;
-        } else {
-          this.rootPage = WelcomePage;
-        }
-      });
+    if (Parse.User.current()) {
+      this.rootPage = TabsPage;
+      return;
+    }
+    this.rootPage = WelcomePage;
   }
 
   // ---

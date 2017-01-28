@@ -1,28 +1,42 @@
 <ion-header>
-  <ion-toolbar color="light">
-    <ion-segment color="dark">
-      <ion-segment-button value="hymn" [ngSwitch]="!!readerHymn" (ionSelect)="presentHymnList()">
-        <div *ngSwitchCase="!!readerHymn.title">{{ readerHymn.title }}</div>
-        <div *ngSwitchDefault>---</div>
-      </ion-segment-button>
-      <ion-segment-button value="hymnal" [ngSwitch]="!!readerHymnal" (ionSelect)="presentHymnalList()">
-        <div *ngSwitchCase="!!readerHymnal.title">{{ readerHymnal.acronym }}</div>
-        <div *ngSwitchDefault>---</div>
-      </ion-segment-button>
-    </ion-segment>
+
+  <ion-toolbar text-center color="white" mode="ios">
+
+    <ion-buttons start>
+      <button ion-button icon-only (click)="presentHymnList()">
+        <ion-icon name="list"></ion-icon>
+      </button>
+    </ion-buttons>
+
+    <ion-title><span ion-text class="tuy-icon-logo" color="dark"></span></ion-title>
+
+    <ion-buttons end>
+      <button ion-button (click)="presentReaderPopover()">aA</button>
+    </ion-buttons>
+
+    <ion-buttons end>
+      <button ion-button (click)="presentHymnalList()">{{ readerHymnal.acronym }}</button>
+    </ion-buttons>
+
   </ion-toolbar>
+
 </ion-header>
+
 
 <ion-content>
 
   <hymnal-sheet *ngIf="readerHymn" [hymn]="readerHymn" [hymnal]="readerHymnal"></hymnal-sheet>
 
-  <ion-fab bottom left *ngIf="readerHymn.number > 1">
-    <button ion-fab mini color="white" (click)="previousHymn()"><ion-icon name="arrow-dropleft"></ion-icon></button>
+  <ion-fab *ngIf="readerHymn.number > 1" bottom left>
+    <button ion-fab mini color="white" (click)="previousHymn()">
+      <ion-icon name="md-arrow-back"></ion-icon>
+    </button>
   </ion-fab>
 
-  <ion-fab bottom right *ngIf="readerHymn.number < readerHymnal.numberOfHymns">
-    <button ion-fab mini color="white" (click)="nextHymn()"><ion-icon name="arrow-dropright"></ion-icon></button>
+  <ion-fab *ngIf="readerHymn.number < readerHymnal.numberOfHymns" bottom right>
+    <button ion-fab mini color="white" (click)="nextHymn()">
+      <ion-icon name="md-arrow-forward"></ion-icon>
+    </button>
   </ion-fab>
 
 </ion-content>

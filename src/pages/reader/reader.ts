@@ -1,11 +1,11 @@
 import { Component, ViewChild } from '@angular/core';
-import { NavController, NavParams, LoadingController, ModalController, AlertController, Content } from 'ionic-angular';
-
-import { HymnListPage } from '../hymn-list/hymn-list';
-import { HymnalListPage } from '../hymnal-list/hymnal-list';
+import { NavController, NavParams, LoadingController, ModalController, Content, PopoverController } from 'ionic-angular';
 
 import { HymnalData } from '../../providers/hymnal-data';
+import { HymnalListPage } from '../hymnal-list/hymnal-list';
 import { HymnData } from '../../providers/hymn-data';
+import { HymnListPage } from '../hymn-list/hymn-list';
+import { HomePage } from '../home/home';
 
 @Component({
   selector: 'page-reader',
@@ -23,9 +23,9 @@ export class ReaderPage {
     public navParams: NavParams,
     private loadingCtrl: LoadingController,
     private modalCtrl: ModalController,
-    private alertCtrl: AlertController,
     private hymnalData: HymnalData,
-    private hymnData: HymnData
+    private hymnData: HymnData,
+    private popoverCtrl: PopoverController
   ) {}
 
   ionViewDidLoad() {
@@ -104,6 +104,11 @@ export class ReaderPage {
       }, error => {
         console.log(error);
       });
+  }
+
+  private presentReaderPopover() {
+    let popover = this.popoverCtrl.create(HomePage);
+    popover.present();
   }
 
 }

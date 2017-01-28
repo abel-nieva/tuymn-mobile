@@ -1,8 +1,9 @@
 hymnal-sheet {
     text-align: center;
     .title,
-    .copyright {
-        padding: 0 16px;
+    .body {
+        font-family: 'Bookerly', sans-serif;
+        font-size: 1.6rem;
     }
     .strophe,
     .chorus {
@@ -27,7 +28,8 @@ hymnal-sheet {
         padding: 0 2px;
     }
     .copyright {
-        max-width: 300px;
-        margin: 0 auto 7rem;
+        color: color($colors, gray);
+        font-size: 1.2rem;
+        margin-bottom: 7rem;
     }
 }

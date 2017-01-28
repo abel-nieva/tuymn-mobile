@@ -1,20 +1,28 @@
-<h6 class="title" *ngIf="!!hymn.title">{{ hymn.number }}. {{ hymn.title }}</h6>
+<h6 *ngIf="!!hymn.title" text-uppercase class="title">{{ hymn.number }}. {{ hymn.title }}</h6>
 
-<div *ngFor="let strophe of hymn.strophes; let i = index;">
+<div *ngFor="let strophe of hymn.strophes; let i = index;" class="body">
+
   <p class="strophe">
     <span class="verse" *ngFor="let verse of strophe; let j = index;">
       <span class="label" *ngIf="j == 0">{{ i + 1 }}.</span>
       <span class="content">{{ verse }}</span>
     </span>
   </p>
+
   <p class="chorus" *ngFor="let chorus of hymn.chorus | slice:i:i+1">
     <strong class="label">Coro</strong>
     <span class="verse" *ngFor="let verse of chorus">
       <span class="content">{{ verse }}</span>
     </span>
   </p>
+
 </div>
 
-<footer class="copyright">
-  <small color="gray" *ngIf="hymnal.copyright">El himno ha sido tomado de la versión {{ hymnal.copyright }}. Utilizado con permiso.</small>
+
+<footer *ngIf="hymnal.copyright" class="copyright">
+  <ion-row>
+    <ion-col width-80 offset-10>
+      El himno ha sido tomado de la versión {{ hymnal.copyright }}. Utilizado con permiso.
+    </ion-col>
+  </ion-row>
 </footer>
