@@ -1,6 +1,9 @@
-<h6 *ngIf="!!hymn.title" text-uppercase>{{ hymn.number }}. {{ hymn.title }}</h6>
+<h6 *ngIf="!!hymn.title"
+    text-uppercase
+    class="hymnal-sheet__title">{{ hymn.number }}. {{ hymn.title }}</h6>
 
-<div *ngFor="let strophe of hymn.strophes; let i = index;" class="body">
+<div *ngFor="let strophe of hymn.strophes; let i = index;"
+     class="hymnal-sheet__content">
 
   <p class="strophe">
     <span class="verse" *ngFor="let verse of strophe; let j = index;">
@@ -18,26 +21,5 @@
 
 </div>
 
-
-<footer *ngIf="hymnal.copyright" >
-
-  <ion-row>
-    <ion-col width-80 offset-10>
-      <p class="copyright">El himno ha sido tomado de la versión {{ hymnal.copyright }}. Utilizado con permiso.</p>
-    </ion-col>
-  </ion-row>
-
-  <ion-toolbar color="white">
-    <ion-buttons left>
-      <button ion-button icon-only (click)="presentHymnList()">
-        <ion-icon name="heart"></ion-icon>
-      </button>
-    </ion-buttons>
-    <ion-buttons left>
-      <button ion-button icon-only (click)="presentHymnList()">
-        64 Me gusta
-      </button>
-    </ion-buttons>
-  </ion-toolbar>
-
-</footer>
+<p *ngIf="hymnal.copyright"
+   class="hymnal-sheet__copyright">El himno ha sido tomado de la versión {{ hymnal.copyright }}. Utilizado con permiso.</p>

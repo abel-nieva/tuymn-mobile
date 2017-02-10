@@ -1,23 +1,48 @@
+@font-face {
+    font-family: 'Bookerly';
+    src: url('../assets/fonts/bookerly-regular-webfont.woff2') format('woff2'),
+         url('../assets/fonts/bookerly-regular-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Bookerly';
+    src: url('../assets/fonts/bookerly-regularitalic-webfont.woff2') format('woff2'),
+         url('../assets/fonts/bookerly-regularitalic-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Bookerly';
+    src: url('../assets/fonts/bookerly-bold-webfont.woff2') format('woff2'),
+         url('../assets/fonts/bookerly-bold-webfont.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Bookerly';
+    src: url('../assets/fonts/bookerly-bolditalic-webfont.woff2') format('woff2'),
+         url('../assets/fonts/bookerly-bolditalic-webfont.woff') format('woff');
+    font-weight: bold;
+    font-style: italic;
+}
+
 hymnal-sheet {
     text-align: center;
-    footer {
-        margin-bottom: 7rem;
-    }
-    h6,
-    .body {
-        font-family: 'Bookerly', sans-serif;
-        font-size: 1.6rem;
-    }
+
     .strophe,
     .chorus {
         &.selected {
             .content {
-                border-bottom: dotted 0.07143rem color($colors, gray);
+                border-bottom: dotted 0.07143rem gray;
             }
         }
         &.highlighted {
             .content {
-                background: color($colors, warning);
+                background: yellow;
             }
         }
     }
@@ -30,8 +55,36 @@ hymnal-sheet {
     .content {
         padding: 0 2px;
     }
-    .copyright {
-        color: color($colors, gray);
-        font-size: 1.2rem;
-    }
 }
+
+
+    .hymnal-sheet__title {
+        @include mq($from: tablet) {
+            margin-top: $unit-large;
+        }
+    }
+
+
+    .hymnal-sheet__title,
+    .hymnal-sheet__content {
+        @include font-size(16px);
+        font-family: 'Bookerly', 'Times New Roman', Georgia, serif;
+
+        @include mq($from: tablet) {
+            @include font-size(20px, false);
+        }
+    }
+
+
+    .hymnal-sheet__copyright {
+        color: color($colors, trolley-grey);
+        font-size: 1.2rem;
+        max-width: 300px;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 8rem;
+
+        @include mq($from: tablet) {
+            max-width: 400px;
+        }
+    }

@@ -33,6 +33,12 @@
     </button>
   </ion-fab>
 
+  <ion-fab bottom center>
+    <button ion-fab mini color="white">
+      <ion-icon name="heart"></ion-icon>
+    </button>
+  </ion-fab>
+
   <ion-fab *ngIf="readerHymn.number < readerHymnal.numberOfHymns" bottom right>
     <button ion-fab mini color="white" (click)="nextHymn()">
       <ion-icon name="md-arrow-forward"></ion-icon>
