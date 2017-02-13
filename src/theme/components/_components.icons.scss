@@ -1,3 +1,7 @@
+/* ==========================================================================
+   #ICONS
+   ========================================================================== */
+
 @font-face {
   font-family: 'icomoon';
   src: url('../assets/fonts/icomoon.eot?2d4q2r');
@@ -23,16 +27,49 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-.tuy-icon- {
 
-  &books:before {
-    content: "\e902";
-  }
-  &logo:before {
-    content: "\e901";
-  }
-  &icon:before {
-    content: "\e900";
-  }
 
+
+
+/* Style variants
+   ========================================================================== */
+
+.tuy-icon-heart-filled:before {
+  content: "\e902";
+}
+.tuy-icon-logo-icon:before {
+  content: "\e900";
+}
+.tuy-icon-logo-font:before {
+  content: "\e901";
+}
+.tuy-icon-cog:before {
+  content: "\e023";
+}
+.tuy-icon-heart:before {
+  content: "\e024";
+}
+.tuy-icon-rewind:before {
+  content: "\e051";
+}
+.tuy-icon-play:before {
+  content: "\e052";
+}
+.tuy-icon-pause:before {
+  content: "\e053";
+}
+.tuy-icon-fast-forward:before {
+  content: "\e055";
+}
+.tuy-icon-arrow-left:before {
+  content: "\e094";
+}
+.tuy-icon-volume:before {
+  content: "\e098";
+}
+.tuy-icon-cross:before {
+  content: "\e117";
+}
+.tuy-icon-menu:before {
+  content: "\e120";
 }
